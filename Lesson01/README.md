@@ -18,6 +18,10 @@
 
 2. Install the active Directory Windows Feature (`Install-WindowsFeature AD-Domain-Services -IncludeManagementTools`)
 
+3. Import ADDS deployment module (`import-Module ADDSDeployment`)
+4. Install ADDSForest (server dns server changes to a loopback address and WE NEED TO CHANGE THIS)
+5. Find out the nerwork Interfaces and index with the loopback address (`Get-DNSClientServer Address`)
+5. set the server address to the prefered ip (`Set-DNSClientServerAddress -InterfaceIndex <index value> -ServerAddress 192.168.111.155`)
 
 
 resources: 
