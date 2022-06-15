@@ -20,8 +20,14 @@
 
 3. Import ADDS deployment module (`import-Module ADDSDeployment`)
 4. Install ADDSForest (server dns server changes to a loopback address and WE NEED TO CHANGE THIS)
-5. Find out the nerwork Interfaces and index with the loopback address (`Get-DNSClientServer Address`)
+5. Find out the nerwork Interfaces and index with the loopback address (`Get-DNSClientServerAddress`)
 5. set the server address to the prefered ip (`Set-DNSClientServerAddress -InterfaceIndex <index value> -ServerAddress <ip address>`)
+
+6. Take snapshot of the freshly installed domain controller as backup
+7. Create new Workstation to be a Client to join the domain from the Windows11 template
+8. Login and join into the workstation, spinup terminal and check the interface index and  DNSserver address it is connected to (`Get-NetIPAddress`) or (`Get-DNSClientServerAddress`)
+9. Change the DNS address to point to THE SAME our Server address we set on the server (`Set-DNSClientServerAddress -InterfaceIndex <index value> -ServerAddress <ip address>`)
+10. On the Workstation, go to `Settings>Accounts>Access Wokr or School` Connect and `Join this device to a local active directory` by supplying the correct credentials OR use PowerShell to join the domain (`Add-Computer -DomainName <domain name> -Credential <domain>\<Username(e.g.Administrator)> -Force -Restart`)
 
 
 resources: 
